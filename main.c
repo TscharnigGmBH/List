@@ -11,13 +11,12 @@ struct node {
 };
 
 void append(struct node* head, int x) {
-
     struct node* current = head;
+
     while (current->next != NULL) {
-
         current = current->next;
-
     }
+
     current->next = malloc(sizeof(struct node*));
     current->next->value = x;
 }
@@ -33,10 +32,8 @@ void printList(struct node* list) {
     struct node* current = list;
 
     while (current->next != NULL) {
-
         printf("%d\n", current->value);
         current=current->next;
-
 
     }
     if (current->next == NULL) {
