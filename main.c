@@ -6,10 +6,8 @@
 
 
 struct node {
-
     int value;
     struct node* next;
-
 };
 
 void append(struct node* head, int x) {
