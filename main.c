@@ -11,21 +11,20 @@ struct node {
 };
 
 void append(struct node* head, int x) {
-    struct node* current = head;
-
-    while (current->next != NULL) {
-        current = current->next;
+    // struct node* current = head;
+    // First used current instead of head, but it has the same result
+    while (head->next != NULL) {
+        head = head->next;
     }
 
-    current->next = malloc(sizeof(struct node*));
-    current->next->value = x;
+    head->next = malloc(sizeof(struct node*));
+    head->next->value = x;
 }
 
 void initialize(struct node* head, int x) {
-
     head->value = x;
     head->next = NULL;
-
+    // you have to do it, when you don't call it, you will get an error
 }
 
 void printList(struct node* list) {
@@ -45,24 +44,30 @@ void inputList(struct node* head) {
 
     char wh = 'j';
     int x = 0;
+    int count = 0;
 
     do {
-
         printf("> ");
         scanf("%d", &x);
         printf("\nAgain? (j/n) >");
-        scanf("%c", &wh);
+        scanf(" %c", &wh);
         append(head, x);
-
     } while (wh == 'j');
-
+    // Works, had to add a space in front of %c
 }
+
+// todo: pop (delete last element)
+// todo: insert on index
+// todo: insert on beginning
+// todo: delete on index
+// todo: delete on beginning
+// todo: get item on index
+// todo: time comparison with array
 
 int main() {
     struct node head;
     initialize(&head, 1);
     inputList(&head);
-
     printList(&head);
 
     return 0;
